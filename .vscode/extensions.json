@@ -1,0 +1,71 @@
+{
+  "recommendations": [
+
+    // ─── Core — GitHub Copilot ────────────────────────────────────────────────
+    "github.copilot",
+    "github.copilot-chat",
+
+    // ─── TypeScript & Formatting ──────────────────────────────────────────────
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "biomejs.biome",                          // Fast all-in-one linter + formatter (Biome)
+
+    // ─── React & Frontend ─────────────────────────────────────────────────────
+    "bradlc.vscode-tailwindcss",
+    "styled-components.vscode-styled-components",
+    "formulahendry.auto-rename-tag",
+    "naumovs.color-highlight",                // Inline colour swatches in CSS/Tailwind
+    "antfu.unocss",                           // UnoCSS intellisense (if STYLING: uno-css)
+
+    // ─── Testing ──────────────────────────────────────────────────────────────
+    "vitest.explorer",                        // Vitest UI in sidebar
+    "orta.vscode-jest",                       // Jest test runner
+    "ms-playwright.playwright",               // Playwright test runner + codegen
+    "ms-vscode.test-adapter-converter",       // Unifies test results across runners
+
+    // ─── Git & Collaboration ──────────────────────────────────────────────────
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",                // Detailed file history view
+
+    // ─── DevOps & Infrastructure ──────────────────────────────────────────────
+    "ms-azuretools.vscode-docker",            // Dockerfile syntax + compose
+    "hashicorp.terraform",                    // HCL syntax + validation
+    "redhat.vscode-yaml",                     // YAML schema validation (K8s, CI/CD)
+    "ms-kubernetes-tools.vscode-kubernetes-tools", // K8s manifest intellisense + cluster view
+    "ms-azuretools.vscode-azurefunctions",    // Azure Functions (if DEPLOY_TARGET: azure)
+    "amazonwebservices.aws-toolkit-vscode",   // AWS Toolkit (if DEPLOY_TARGET: aws)
+
+    // ─── Database ─────────────────────────────────────────────────────────────
+    "cweijan.vscode-postgresql-client2",      // PostgreSQL explorer + query runner
+    "mongodb.mongodb-vscode",                 // MongoDB explorer (if PRIMARY_DB: mongodb)
+    "prisma.prisma",                          // Prisma schema syntax + formatting (if ORM: prisma)
+    "mtxr.sqltools",                          // Universal DB client (works with any DB)
+
+    // ─── API Development ──────────────────────────────────────────────────────
+    "humao.rest-client",                      // .http file request runner
+    "42crunch.vscode-openapi",                // OpenAPI / Swagger editor + preview
+    "rangav.vscode-thunder-client",           // Lightweight Postman alternative built-in
+
+    // ─── Security ─────────────────────────────────────────────────────────────
+    "snyk-security.snyk-vulnerability-scanner", // Real-time vulnerability scanning in editor
+    "sonarsource.sonarlint-vscode",           // SonarLint SAST — catches security issues inline
+
+    // ─── Code Quality & Productivity ─────────────────────────────────────────
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",                   // Inline error/warning messages
+    "christian-kohler.path-intellisense",     // Path autocomplete
+    "gruntfuggly.todo-tree",                  // TODO/FIXME tracker in sidebar
+    "wix.vscode-import-cost",                 // Shows bundle size of each import inline
+    "pflannery.vscode-versionlens",           // Shows latest package versions in package.json
+    "mikestead.dotenv",                       // .env syntax highlighting
+    "editorconfig.editorconfig",              // Respects .editorconfig (cross-editor consistency)
+
+    // ─── Documentation & Diagrams ─────────────────────────────────────────────
+    "bierner.markdown-mermaid",               // Mermaid diagram preview in Markdown (ADRs)
+    "yzhang.markdown-all-in-one",             // Markdown shortcuts + TOC generation
+    "davidanson.vscode-markdownlint"          // Markdown lint rules
+  ]
+}

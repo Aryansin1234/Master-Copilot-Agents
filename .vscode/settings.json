@@ -1,0 +1,144 @@
+{
+  // ─── GitHub Copilot ────────────────────────────────────────────────────────
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.reviewSelection.enabled":            true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    { "text": "Use conventional commits format: type(scope): description. Types: feat, fix, refactor, test, docs, chore, perf, ci. Keep under 72 chars." }
+  ],
+  "github.copilot.chat.codeGeneration.instructions": [
+    { "text": "Always read copilot-instructions.md at the repo root before generating code. Adapt patterns to the stack defined there." }
+  ],
+
+  // ─── Editor — Core ─────────────────────────────────────────────────────────
+  "editor.formatOnSave":     true,
+  "editor.formatOnPaste":    false,           // Don't reformat pasted code — too aggressive
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint":   "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.rulers":            [100],
+  "editor.minimap.enabled":   false,
+  "editor.linkedEditing":     true,           // Auto-rename matching HTML/JSX tags
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",     // Highlight active bracket pair
+  "editor.inlayHints.enabled": "onUnlessPressed",
+  "editor.stickyScroll.enabled": true,        // Keep class/function name visible while scrolling
+  "editor.suggest.preview":   true,           // Show suggestion preview inline
+  "editor.accessibilitySupport": "off",       // Avoids performance overhead unless needed
+
+  // ─── Editor — Diff ─────────────────────────────────────────────────────────
+  "diffEditor.ignoreTrimWhitespace": false,   // Show whitespace diffs — they matter
+  "diffEditor.renderSideBySide":     true,
+
+  // ─── Files ─────────────────────────────────────────────────────────────────
+  "files.associations": {
+    "*.css":           "tailwindcss",
+    "*.env":           "dotenv",
+    "*.env.*":         "dotenv",
+    "Dockerfile*":     "dockerfile",
+    "*.instructions.md": "markdown"           // Agent instruction files → Markdown
+  },
+  "files.exclude": {
+    "**/.git":          true,
+    "**/node_modules":  true,
+    "**/.next":         true,
+    "**/__pycache__":   true,
+    "**/.pytest_cache": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.next/**":        true,
+    "**/dist/**":         true
+  },
+
+  // ─── TypeScript ────────────────────────────────────────────────────────────
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.updateImportsOnFileMove.enabled":   "always",
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.inlayHints.variableTypes.enabled":  false,      // Too noisy
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,   // import type {} by default
+  "typescript.tsdk": "node_modules/typescript/lib",           // Use local TS, not bundled
+
+  // ─── Testing ───────────────────────────────────────────────────────────────
+  "vitest.enable":                       true,
+  "vitest.commandLine":                  "npx vitest",
+  "testing.automaticallyOpenPeekView":   "never",
+  "testing.showAllMessages":             true,
+  "testing.coverageBarThresholds": {
+    "red":    60,
+    "yellow": 80
+  },                                                          // Colour-code coverage in gutter
+  "playwright.reuseBrowser":             false,
+  "playwright.showTrace":                true,
+
+  // ─── Tailwind CSS ──────────────────────────────────────────────────────────
+  "tailwindCSS.experimental.classRegex": [
+    ["cn\\(([^)]*)\\)",   "[\"'`]([^\"'`]*).*?[\"'`]"],      // cn() utility
+    ["cva\\(([^)]*)\\)",  "[\"'`]([^\"'`]*).*?[\"'`]"],      // cva() variants
+    ["clsx\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],      // clsx() utility
+    ["tw`([^`]*)`",       "([^`]*)"]                          // tw`` template literal
+  ],
+  "tailwindCSS.validate":                true,
+  "tailwindCSS.lint.cssConflict":        "warning",
+
+  // ─── Git ───────────────────────────────────────────────────────────────────
+  "git.autofetch":          true,
+  "git.confirmSync":        false,
+  "git.enableSmartCommit":  true,
+  "git.postCommitCommand":  "none",
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.currentLine.enabled":     true,
+
+  // ─── Security Extensions ───────────────────────────────────────────────────
+  "sonarlint.rules": {
+    "typescript:S2068": { "level": "on" },   // Hardcoded credentials
+    "typescript:S5122": { "level": "on" },   // CORS
+    "typescript:S4830": { "level": "on" }    // Certificate validation
+  },
+
+  // ─── Docker ────────────────────────────────────────────────────────────────
+  "docker.defaultRegistryPath": "ghcr.io",  // Prefer GitHub Container Registry
+
+  // ─── Explorer — File Nesting ───────────────────────────────────────────────
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    // Source files nest their test + story siblings
+    "*.ts":             "${capture}.test.ts, ${capture}.spec.ts, ${capture}.d.ts",
+    "*.tsx":            "${capture}.test.tsx, ${capture}.spec.tsx, ${capture}.stories.tsx, ${capture}.stories.ts",
+    // Config files nest their related configs
+    "package.json":     "package-lock.json, yarn.lock, pnpm-lock.yaml, .npmrc, .nvmrc, .node-version",
+    "tailwind.config.*": "postcss.config.*",
+    "next.config.*":    "next-env.d.ts, next-sitemap.config.*",
+    "vite.config.*":    "vitest.config.*",
+    "tsconfig.json":    "tsconfig.*.json",
+    // Env files
+    ".env":             ".env.*, .env.local, .env.example",
+    // Docker
+    "docker-compose.yml": "docker-compose.*.yml, Dockerfile, Dockerfile.*, .dockerignore",
+    // Prisma
+    "schema.prisma":    "migrations/*",
+    // CI/CD
+    ".github":          ".github/*"
+  },
+  "explorer.sortOrder": "filesFirst",
+
+  // ─── Error Lens ────────────────────────────────────────────────────────────
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.excludeBySource":         ["eslint(prettier/prettier)"],
+
+  // ─── Import Cost ───────────────────────────────────────────────────────────
+  "importCost.smallPackageSize":  10,      // < 10KB → green
+  "importCost.mediumPackageSize": 50,      // 10–50KB → yellow
+  "importCost.largePackageSize":  100,     // > 100KB → red
+
+  // ─── Spell Checker ─────────────────────────────────────────────────────────
+  "cSpell.words": [
+    "nextjs", "drizzle", "prisma", "trpc", "zod", "zustand",
+    "pino", "bullmq", "upstash", "supabase", "planetscale",
+    "kyma", "argocd", "opentelemetry", "otel",
+    "vitest", "msw", "stryker", "pact",
+    "shadcn", "tailwindcss", "clsx"
+  ]
+}
